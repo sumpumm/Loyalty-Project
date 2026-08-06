@@ -411,6 +411,11 @@
       </div>
     </div>
   </div>
-
+<% if (locals.alertMessage) { %>
+  <script>
+    const message = "<%= alertMessage %>";
+    alert(message);
+  </script>
+ <% } %>
 </body>
 </html>

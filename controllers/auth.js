@@ -7,10 +7,10 @@ async function handleUserSingup(req,res){
         const {firstName,lastName,email,password} = req.body;
         const hashedPassword = bcrypt.hashSync(password);
         await USER.create({firstName,lastName,email,password: hashedPassword}).then(()=>{
-            res.status(200).json({message : "User registered successfully"});
+            res.render('login',{alertMessage:"User has been created."});
         });
     }catch(error){
-        res.status(409).json({message : "Email already exists"});
+        res.render('signup',{alertMessage : "Email already exists"});
     }
     
 }
