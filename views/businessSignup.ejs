@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Sign up — Stampede</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #16241d;
+      --ink-soft: #24352c;
+      --card: #f1e9d8;
+      --card-dim: #e4d9c1;
+      --brass: #c9a24b;
+      --brass-bright: #e0bc6a;
+      --sage: #7c9c82;
+      --line: rgba(241, 233, 216, 0.14);
+      --error: #d97757;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--ink);
+      color: var(--card);
+      font-family: 'Work Sans', sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .screen {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* ---------- LEFT: BRAND PANEL ---------- */
+    .panel {
+      position: relative;
+      background: var(--ink-soft);
+      border-right: 1px solid var(--line);
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      z-index: 2;
+      position: relative;
+    }
+
+    .logo .mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px dashed var(--brass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--brass-bright);
+    }
+
+    .panel-copy {
+      z-index: 2;
+      position: relative;
+      max-width: 380px;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .panel-copy h2 {
+      font-size: 1.9rem;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .panel-copy p {
+      color: var(--card-dim);
+      font-size: 0.98rem;
+    }
+
+    /* signature: single card being "stamped" fresh */
+    .stamp-card {
+      position: absolute;
+      width: 300px;
+      height: 190px;
+      border-radius: 18px;
+      background: var(--card);
+      color: var(--ink);
+      padding: 22px;
+      right: -60px;
+      bottom: -20px;
+      transform: rotate(-6deg);
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 22px;
+    }
+    .card-brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .card-tier {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--brass-bright);
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .punches {
+      display: flex;
+      gap: 10px;
+    }
+    .punch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(22,36,29,0.35);
+    }
+    .punch.filled {
+      border-style: solid;
+      border-color: var(--brass);
+      background: var(--brass);
+    }
+
+    /* ---------- RIGHT: FORM ---------- */
+    .form-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 44px;
+    }
+
+    .form-box {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .form-box h1 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .form-sub {
+      color: var(--card-dim);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+    .form-sub a {
+      color: var(--brass-bright);
+      font-weight: 500;
+    }
+    .form-sub a:hover { text-decoration: underline; }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--card-dim);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .field input {
+      width: 100%;
+      background: var(--ink-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 13px 14px;
+      color: var(--card);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.15s ease;
+    }
+
+    .field input::placeholder { color: rgba(228, 217, 193, 0.35); }
+
+    .field input:focus {
+      outline: none;
+      border-color: var(--brass);
+    }
+
+    .field-hint {
+      font-size: 0.78rem;
+      color: rgba(228, 217, 193, 0.55);
+      margin-top: 6px;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .field-row input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--brass);
+    }
+
+    .field-row label {
+      font-size: 0.85rem;
+      color: var(--card-dim);
+    }
+    .field-row a {
+      color: var(--brass-bright);
+    }
+    .field-row a:hover { text-decoration: underline; }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 22px;
+      border-radius: 999px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-solid {
+      background: var(--brass);
+      color: var(--ink);
+    }
+    .btn-solid:hover { background: var(--brass-bright); }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 28px 0;
+      color: rgba(228, 217, 193, 0.4);
+      font-size: 0.8rem;
+    }
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .btn-oauth {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--card);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: border-color 0.15s ease;
+    }
+    .btn-oauth:hover { border-color: var(--brass); }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--card-dim);
+      margin-top: 32px;
+    }
+    .back-home:hover { color: var(--brass-bright); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .screen { grid-template-columns: 1fr; }
+      .panel { display: none; }
+      .form-side { padding: 32px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+
+    input:focus-visible, a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--brass-bright);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="screen">
+    <!-- ---------- LEFT PANEL ---------- -->
+    <div class="panel">
+      <a href="/" class="logo">
+        <span class="mark">St</span>
+        Stampede
+      </a>
+
+      <div class="panel-copy">
+        <div class="eyebrow">Free to start</div>
+        <h2>Issue your first digital loyalty card in minutes.</h2>
+        <p>No plastic, no printer, no setup fee. Your customers keep their card in Apple Wallet or Google Wallet from day one.</p>
+      </div>
+
+      <div class="stamp-card">
+        <div class="card-top">
+          <div class="card-brand">Your Shop</div>
+          <div class="card-tier">New card</div>
+        </div>
+        <div class="punches">
+          <div class="punch filled"></div>
+          <div class="punch"></div>
+          <div class="punch"></div>
+          <div class="punch"></div>
+          <div class="punch"></div>
+          <div class="punch"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------- RIGHT: FORM ---------- -->
+    <div class="form-side">
+      <div class="form-box">
+        <h1>Create your account</h1>
+        <p class="form-sub">Already have one? <a href="/login">Log in</a></p>
+
+        <form action="/auth/business" method="POST">
+          <div class="field">
+            <label>Business Name</label>
+            <input type="text"  name="businessName" placeholder="Cedar &amp; Co." required>
+          </div>
+
+          <div class="field">
+            <label>Email address</label>
+            <input type="email" name="email" placeholder="you@business.com" required>
+          </div>
+          <div class="field">
+            <label>Contact Number</label>
+            <input type="text" name="phone" placeholder="9874895624" required>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="At least 8 characters" minlength="8" required>
+            <div class="field-hint">Use 8+ characters with a mix of letters and numbers.</div>
+          </div>
+          <button type="submit" class="btn btn-solid">Create account</button>
+        </form>
+
+        <div class="divider">or sign up with</div>
+
+        <button type="button" class="btn-oauth">Continue with Google</button>
+        <button type="button" class="btn-oauth">Continue with Apple</button>
+
+        <a href="/" class="back-home">← Back to home</a>
+      </div>
+    </div>
+  </div>
+<% if (locals.alertMessage) { %>
+  <script>
+    const message = "<%= alertMessage %>";
+    alert(message);
+  </script>
+ <% } %>
+</body>
+</html>

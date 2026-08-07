@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign up — Stampede</title>
+  <title>Log in — Stampede</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
@@ -16,7 +16,6 @@
       --brass-bright: #e0bc6a;
       --sage: #7c9c82;
       --line: rgba(241, 233, 216, 0.14);
-      --error: #d97757;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -116,7 +115,7 @@
       font-size: 0.98rem;
     }
 
-    /* signature: single card being "stamped" fresh */
+    /* signature: near-full card, one punch from a reward */
     .stamp-card {
       position: absolute;
       width: 300px;
@@ -162,6 +161,10 @@
       height: 24px;
       border-radius: 50%;
       border: 1.5px dashed rgba(22,36,29,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
     }
     .punch.filled {
       border-style: solid;
@@ -202,13 +205,25 @@
       margin-bottom: 20px;
     }
 
+    .field-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
     .field label {
       display: block;
       font-size: 0.85rem;
       color: var(--card-dim);
-      margin-bottom: 8px;
       font-weight: 500;
     }
+
+    .field-label-row a {
+      font-size: 0.8rem;
+      color: var(--brass-bright);
+    }
+    .field-label-row a:hover { text-decoration: underline; }
 
     .field input {
       width: 100%;
@@ -229,21 +244,14 @@
       border-color: var(--brass);
     }
 
-    .field-hint {
-      font-size: 0.78rem;
-      color: rgba(228, 217, 193, 0.55);
-      margin-top: 6px;
-    }
-
     .field-row {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 10px;
       margin-bottom: 26px;
     }
 
     .field-row input[type="checkbox"] {
-      margin-top: 3px;
       accent-color: var(--brass);
     }
 
@@ -251,10 +259,6 @@
       font-size: 0.85rem;
       color: var(--card-dim);
     }
-    .field-row a {
-      color: var(--brass-bright);
-    }
-    .field-row a:hover { text-decoration: underline; }
 
     .btn {
       display: inline-block;
@@ -350,22 +354,22 @@
       </a>
 
       <div class="panel-copy">
-        <div class="eyebrow">Free to start</div>
-        <h2>Issue your first digital loyalty card in minutes.</h2>
-        <p>No plastic, no printer, no setup fee. Your customers keep their card in Apple Wallet or Google Wallet from day one.</p>
+        <div class="eyebrow">Welcome back</div>
+        <h2>Your customers have been collecting stamps while you were away.</h2>
+        <p>Log in to see who's close to a reward, add new stamps, and check in on your regulars.</p>
       </div>
 
       <div class="stamp-card">
         <div class="card-top">
-          <div class="card-brand">Your Shop</div>
-          <div class="card-tier">New card</div>
+          <div class="card-brand">Cedar &amp; Co.</div>
+          <div class="card-tier">Gold tier</div>
         </div>
         <div class="punches">
-          <div class="punch filled"></div>
-          <div class="punch"></div>
-          <div class="punch"></div>
-          <div class="punch"></div>
-          <div class="punch"></div>
+          <div class="punch filled">✓</div>
+          <div class="punch filled">✓</div>
+          <div class="punch filled">✓</div>
+          <div class="punch filled">✓</div>
+          <div class="punch filled">✓</div>
           <div class="punch"></div>
         </div>
       </div>
@@ -374,35 +378,32 @@
     <!-- ---------- RIGHT: FORM ---------- -->
     <div class="form-side">
       <div class="form-box">
-        <h1>Create your account</h1>
-        <p class="form-sub">Already have one? <a href="/login">Log in</a></p>
+        <h1>Log in</h1>
+        <p class="form-sub">New to Stampede? <a href="/signup">Create an account</a></p>
 
-        <form action="/user" method="POST">
+        <form action="/auth/login" method="POST">
           <div class="field">
-            <label>First Name</label>
-            <input type="text"  name="firstName" placeholder="Cedar &amp; Co." required>
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@business.com" required>
           </div>
 
           <div class="field">
-            <label>Last Name</label>
-            <input type="text"  name="lastName" placeholder="Cedar &amp; Co." required>
+            <div class="field-label-row">
+              <label for="password">Password</label>
+              <a href="/forgot-password">Forgot password?</a>
+            </div>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
           </div>
 
-
-          <div class="field">
-            <label>Email address</label>
-            <input type="email" name="email" placeholder="you@business.com" required>
+          <div class="field-row">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Keep me logged in</label>
           </div>
 
-          <div class="field">
-            <label for="password">Password</label>
-            <input type="password" name="password" placeholder="At least 8 characters" minlength="8" required>
-            <div class="field-hint">Use 8+ characters with a mix of letters and numbers.</div>
-          </div>
-          <button type="submit" class="btn btn-solid">Create account</button>
+          <button type="submit" class="btn btn-solid">Log in</button>
         </form>
 
-        <div class="divider">or sign up with</div>
+        <div class="divider">or continue with</div>
 
         <button type="button" class="btn-oauth">Continue with Google</button>
         <button type="button" class="btn-oauth">Continue with Apple</button>
@@ -411,7 +412,7 @@
       </div>
     </div>
   </div>
-<% if (locals.alertMessage) { %>
+ <% if (locals.alertMessage) { %>
   <script>
     const message = "<%= alertMessage %>";
     alert(message);

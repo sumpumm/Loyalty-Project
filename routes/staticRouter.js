@@ -7,11 +7,19 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/login',(req,res)=>{
-    return res.render('login');
+    return res.render('userLogin');
 });
 
 router.get('/signup',(req,res)=>{
-    return res.render('signup');
+    return res.render('userSignup');
+});
+
+router.get('/businessSignup',(req,res)=>{
+    return res.render('businessSignup');
+});
+
+router.get('/businessLogin',(req,res)=>{
+    return res.render('businessLogin');
 });
 
 module.exports = router;

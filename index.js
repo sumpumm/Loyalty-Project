@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const staticRoute = require('./routes/staticRouter');
 const authRoute = require('./routes/auth');
 const businessRoute = require('./routes/business');
+const userRoute = require('./routes/user');
 
 //middlewares
 const { checkAuth } = require('./middleware');
@@ -31,7 +32,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use('/',staticRoute);
-app.use('/user',authRoute);
+app.use('/auth',authRoute);
 app.use('/api/business',checkAuth(),businessRoute);
+app.use('/user',checkAuth(),userRoute);
 
 app.listen(PORT,()=>console.log(`SERVER STARTED AT PORT: ${PORT}`));

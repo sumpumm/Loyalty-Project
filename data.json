@@ -2,69 +2,69 @@
   "data": [
     {
       "actions": [
-        { "action_type": "onsite_conversion.lead", "value": "2" },
+        { "action_type": "onsite_conversion.lead", "value": "3" },
         {
           "action_type": "offsite_complete_registration_add_meta_leads",
-          "value": "2"
+          "value": "3"
         },
-        { "action_type": "link_click", "value": "10080" },
-        { "action_type": "offsite_search_add_meta_leads", "value": "2" },
-        { "action_type": "post_reaction", "value": "16452" },
+        { "action_type": "link_click", "value": "19202" },
+        { "action_type": "offsite_search_add_meta_leads", "value": "3" },
+        { "action_type": "post_reaction", "value": "32092" },
         {
           "action_type": "onsite_conversion.messaging_conversation_replied_7d",
-          "value": "19"
+          "value": "44"
         },
-        { "action_type": "landing_page_view", "value": "1" },
-        { "action_type": "onsite_web_lead", "value": "2" },
-        { "action_type": "omni_landing_page_view", "value": "1" },
-        { "action_type": "onsite_conversion.messaging_block", "value": "10" },
+        { "action_type": "landing_page_view", "value": "2" },
+        { "action_type": "onsite_web_lead", "value": "3" },
+        { "action_type": "omni_landing_page_view", "value": "2" },
+        { "action_type": "onsite_conversion.messaging_block", "value": "21" },
         {
           "action_type": "onsite_conversion.total_messaging_connection",
-          "value": "1467"
+          "value": "2693"
         },
-        { "action_type": "onsite_conversion.post_unlike", "value": "854" },
-        { "action_type": "post_engagement", "value": "469808" },
-        { "action_type": "like", "value": "145" },
-        { "action_type": "post_interaction_gross", "value": "17416" },
-        { "action_type": "comment", "value": "162" },
-        { "action_type": "page_engagement", "value": "469953" },
+        { "action_type": "onsite_conversion.post_unlike", "value": "1693" },
+        { "action_type": "post_engagement", "value": "913384" },
+        { "action_type": "like", "value": "260" },
+        { "action_type": "post_interaction_gross", "value": "33947" },
+        { "action_type": "comment", "value": "294" },
+        { "action_type": "page_engagement", "value": "913644" },
         {
           "action_type": "onsite_conversion.messaging_welcome_message_view",
-          "value": "321"
+          "value": "559"
         },
-        { "action_type": "post_interaction_net", "value": "18282" },
-        { "action_type": "post_uncomment", "value": "5" },
+        { "action_type": "post_interaction_net", "value": "35669" },
+        { "action_type": "post_uncomment", "value": "9" },
         {
           "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
-          "value": "872"
+          "value": "1555"
         },
         {
           "action_type": "onsite_conversion.messaging_first_reply",
-          "value": "769"
+          "value": "1436"
         },
-        { "action_type": "post", "value": "523" },
-        { "action_type": "onsite_conversion.post_unsave", "value": "7" },
-        { "action_type": "photo_view", "value": "5761" },
-        { "action_type": "onsite_conversion.post_save", "value": "279" },
-        { "action_type": "onsite_conversion.post_net_comment", "value": "167" },
+        { "action_type": "post", "value": "973" },
+        { "action_type": "onsite_conversion.post_unsave", "value": "20" },
+        { "action_type": "photo_view", "value": "9262" },
+        { "action_type": "onsite_conversion.post_save", "value": "588" },
+        { "action_type": "onsite_conversion.post_net_comment", "value": "303" },
         {
           "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
-          "value": "550"
+          "value": "986"
         },
-        { "action_type": "onsite_conversion.post_net_save", "value": "272" },
-        { "action_type": "onsite_conversion.post_net_like", "value": "15598" },
+        { "action_type": "onsite_conversion.post_net_save", "value": "568" },
+        { "action_type": "onsite_conversion.post_net_like", "value": "30399" },
         {
           "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
-          "value": "959"
+          "value": "1957"
         },
-        { "action_type": "lead", "value": "2" },
-        { "action_type": "offsite_content_view_add_meta_leads", "value": "2" },
+        { "action_type": "lead", "value": "3" },
+        { "action_type": "offsite_content_view_add_meta_leads", "value": "3" },
         {
           "action_type": "onsite_conversion.messaging_conversation_started_7d",
-          "value": "1319"
+          "value": "2416"
         },
-        { "action_type": "onsite_conversion.lead_grouped", "value": "2" },
-        { "action_type": "video_view", "value": "436551" }
+        { "action_type": "onsite_conversion.lead_grouped", "value": "3" },
+        { "action_type": "video_view", "value": "850973" }
       ],
       "date_start": "2026-08-06",
       "date_stop": "2026-08-06"
