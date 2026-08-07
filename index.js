@@ -34,6 +34,6 @@ app.use(cookieParser());
 app.use('/',staticRoute);
 app.use('/auth',authRoute);
 app.use('/api/business',checkAuth(),businessRoute);
-app.use('/user',checkAuth(),userRoute);
+app.use('/user',userRoute);
 
 app.listen(PORT,()=>console.log(`SERVER STARTED AT PORT: ${PORT}`));

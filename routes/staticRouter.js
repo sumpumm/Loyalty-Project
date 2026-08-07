@@ -22,4 +22,13 @@ router.get('/businessLogin',(req,res)=>{
     return res.render('businessLogin');
 });
 
+router.get('/userDashboard',(req,res)=>{
+    return res.render('userDashboard');
+});
+
+router.get('/discover',(req,res)=>{
+    return res.render('discover');
+});
+
+
 module.exports = router;
