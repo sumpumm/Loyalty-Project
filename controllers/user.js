@@ -3,11 +3,16 @@ const WALLET = require('../models/wallet');
 const { getUser } = require("../services/auth");
 
 async function handleUserDashboard(req,res){
-    const {_id,email,iat} = req.user;
-    return res.render('userDashboard',{email});
+    const userWallet = await WALLET.find({user:req.user._id},{business:1});
+    const businessIds = userWallet.map(wallet=>wallet.business);
+    const businesses = await Promise.all(businessIds.map(async (id)=> {return await BUSINESS.findOne({_id:id},{businessName:1})}));
+    console.log(businesses);
+    const businessName = businesses.map(business=>business.businessName);
+    console.log(businessName);
+    return res.render('userDashboard',{businessName});
 }
 
-async function handleSearch(req,res){
+async function handleSearch(req,res){   
     try{
         const search = req.query.search || "";
         const businesses = await BUSINESS.find({businessName:{$regex:search,$options:"i"}},{businessName:1});
@@ -34,8 +39,13 @@ async function handleBusinessAdd(req,res){
     }
 }
 
+async function handleJoin(req,res){
+    res.render('discover');
+}
+
 module.exports = {
     handleUserDashboard,
     handleSearch,
     handleBusinessAdd,
+    handleJoin
 }

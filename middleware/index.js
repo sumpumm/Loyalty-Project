@@ -7,6 +7,7 @@ function checkAuth(){
         const user = getUser(userToken);
         if (user===null) return res.redirect('/businessLogin');
         req.user = user;
+
         next();
     }
 }

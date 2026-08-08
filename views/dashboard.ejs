@@ -518,13 +518,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <% if (locals.userNames) { %>
+               <% userNames.forEach(userName => { %>
+                <tr>
                 <td>
                   <div class="cust">
                     <div class="avatar-sm">MR</div>
                     <div>
-                      <span class="name">Maria Reyes</span>
-                      <span class="email">maria.reyes@gmail.com</span>
+                      <span class="name"><%= userName.firstName+" "+userName.lastName%></span>
+                      <span class="email"><%= userName.email %></span>
                     </div>
                   </div>
                 </td>
@@ -539,90 +541,9 @@
                 <td><span class="status-pill reward">1 stamp to reward</span></td>
                 <td><button class="row-action">Add stamp</button></td>
               </tr>
-              <tr>
-                <td>
-                  <div class="cust">
-                    <div class="avatar-sm">JK</div>
-                    <div>
-                      <span class="name">Jordan Kim</span>
-                      <span class="email">jordan.kim@outlook.com</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mini-punches">
-                    <div class="mini-punch filled"></div><div class="mini-punch filled"></div>
-                    <div class="mini-punch"></div><div class="mini-punch"></div>
-                    <div class="mini-punch"></div><div class="mini-punch"></div>
-                  </div>
-                </td>
-                <td>Yesterday</td>
-                <td><span class="status-pill active">Active</span></td>
-                <td><button class="row-action">Add stamp</button></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cust">
-                    <div class="avatar-sm">AT</div>
-                    <div>
-                      <span class="name">Aisha Thompson</span>
-                      <span class="email">aisha.t@yahoo.com</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mini-punches">
-                    <div class="mini-punch filled"></div><div class="mini-punch filled"></div>
-                    <div class="mini-punch filled"></div><div class="mini-punch"></div>
-                    <div class="mini-punch"></div><div class="mini-punch"></div>
-                  </div>
-                </td>
-                <td>3 days ago</td>
-                <td><span class="status-pill active">Active</span></td>
-                <td><button class="row-action">Add stamp</button></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cust">
-                    <div class="avatar-sm">DP</div>
-                    <div>
-                      <span class="name">Daniel Park</span>
-                      <span class="email">d.park@icloud.com</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mini-punches">
-                    <div class="mini-punch filled"></div><div class="mini-punch"></div>
-                    <div class="mini-punch"></div><div class="mini-punch"></div>
-                    <div class="mini-punch"></div><div class="mini-punch"></div>
-                  </div>
-                </td>
-                <td>18 days ago</td>
-                <td><span class="status-pill quiet">Gone quiet</span></td>
-                <td><button class="row-action">Add stamp</button></td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="cust">
-                    <div class="avatar-sm">SL</div>
-                    <div>
-                      <span class="name">Sofia Lindqvist</span>
-                      <span class="email">sofia.l@proton.me</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mini-punches">
-                    <div class="mini-punch filled"></div><div class="mini-punch filled"></div>
-                    <div class="mini-punch filled"></div><div class="mini-punch filled"></div>
-                    <div class="mini-punch filled"></div><div class="mini-punch filled"></div>
-                  </div>
-                </td>
-                <td>Today</td>
-                <td><span class="status-pill reward">Reward ready</span></td>
-                <td><button class="row-action">Redeem</button></td>
-              </tr>
+               <% }) %>
+              <% } %>
+              
             </tbody>
           </table>
         </div>

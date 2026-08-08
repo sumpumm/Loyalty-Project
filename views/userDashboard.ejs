@@ -337,7 +337,7 @@
       <div class="nav-links">
         <a href="/wallet" class="active">My cards</a>
         <a href="/wallet/activity">Activity</a>
-        <a href="/discover">Discover businesses</a>
+        <a href="/user/join">Discover businesses</a>
       </div>
       <div class="nav-actions">
         <a href="/account" class="avatar">MR</a>
@@ -351,22 +351,22 @@
         <h1>Hey Maria, here's your wallet</h1>
         <div class="sub">3 loyalty cards, 1 reward ready to redeem</div>
       </div>
-      <a href="/discover" class="btn">+ Add a card</a>
+      <a href="/user/join" class="btn">+ Add a card</a>
     </div>
 
     <!-- STATS -->
     <div class="stats">
       <div class="stat-card">
         <span class="label">Active cards</span>
-        <div class="value">3</div>
+        <div class="value"><%= businessName.length %></div>
       </div>
       <div class="stat-card">
         <span class="label">Total stamps earned</span>
-        <div class="value">47</div>
+        <div class="value">0</div>
       </div>
       <div class="stat-card">
         <span class="label">Rewards unlocked</span>
-        <div class="value">6</div>
+        <div class="value">0</div>
       </div>
     </div>
 
@@ -374,33 +374,13 @@
     <h2 class="section-title">Your cards</h2>
     <div class="card-grid">
 
-      <!-- reward ready -->
-      <div class="loyalty-card ready">
-        <div class="lc-top">
-          <div>
-            <div class="lc-brand">Cedar &amp; Co.</div>
-            <div class="lc-category">Coffee shop</div>
-          </div>
-          <div class="lc-tier">Reward ready</div>
-        </div>
-        <div class="lc-punches">
-          <div class="lc-punch filled">✓</div><div class="lc-punch filled">✓</div>
-          <div class="lc-punch filled">✓</div><div class="lc-punch filled">✓</div>
-          <div class="lc-punch filled">✓</div><div class="lc-punch filled">✓</div>
-          <div class="lc-punch filled">✓</div><div class="lc-punch filled">✓</div>
-          <div class="lc-punch filled">✓</div><div class="lc-punch filled">✓</div>
-        </div>
-        <div class="lc-foot">
-          <span class="lc-progress-text">Free coffee unlocked</span>
-          <span class="lc-cta">Redeem →</span>
-        </div>
-      </div>
-
       <!-- in progress -->
-      <div class="loyalty-card">
+      <% if (locals.businessName) { %>
+          <% businessName.forEach(x => { %>
+           <div class="loyalty-card">
         <div class="lc-top">
           <div>
-            <div class="lc-brand">Rosemary Kitchen</div>
+            <div class="lc-brand"><%= x %></div>
             <div class="lc-category">Restaurant</div>
           </div>
           <div class="lc-tier">Active</div>
@@ -417,31 +397,11 @@
           <span class="lc-cta">View</span>
         </div>
       </div>
-
-      <!-- in progress -->
-      <div class="loyalty-card">
-        <div class="lc-top">
-          <div>
-            <div class="lc-brand">Bloom &amp; Wick</div>
-            <div class="lc-category">Florist</div>
-          </div>
-          <div class="lc-tier">Active</div>
-        </div>
-        <div class="lc-punches">
-          <div class="lc-punch filled">✓</div><div class="lc-punch filled">✓</div>
-          <div class="lc-punch"></div><div class="lc-punch"></div>
-          <div class="lc-punch"></div><div class="lc-punch"></div>
-          <div class="lc-punch"></div><div class="lc-punch"></div>
-          <div class="lc-punch"></div><div class="lc-punch"></div>
-        </div>
-        <div class="lc-foot">
-          <span class="lc-progress-text">8 stamps to reward</span>
-          <span class="lc-cta">View</span>
-        </div>
-      </div>
+          <% }) %>
+      <% } %>
 
       <!-- add card tile -->
-      <a href="/discover" class="add-card-tile">
+      <a href="/user/join" class="add-card-tile">
         <div class="plus">+</div>
         <div>Join a new loyalty program</div>
       </a>
