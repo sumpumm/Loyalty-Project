@@ -193,7 +193,6 @@
       <div class="empty-state">Start typing to find a business.</div>
     </div>
   </main>
-
   <script>
     const input = document.getElementById('searchInput');
     const results = document.getElementById('results');
@@ -268,11 +267,17 @@
             })
         });
 
-        if (!res.ok) {
-            throw new Error('Join failed');
+        const data = await res.json();
+
+        if(data.error){
+          btn.textContent = 'Join';
+          btn.disabled = false;
+          return alert(data.error);
         }
 
         btn.textContent = 'Joined ✓';
+        alert(data.message);
+        window.location.href = '/user';
 
     } catch (err) {
         console.error(err);

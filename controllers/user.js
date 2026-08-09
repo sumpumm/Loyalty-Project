@@ -6,9 +6,7 @@ async function handleUserDashboard(req,res){
     const userWallet = await WALLET.find({user:req.user._id},{business:1});
     const businessIds = userWallet.map(wallet=>wallet.business);
     const businesses = await Promise.all(businessIds.map(async (id)=> {return await BUSINESS.findOne({_id:id},{businessName:1})}));
-    console.log(businesses);
     const businessName = businesses.map(business=>business.businessName);
-    console.log(businessName);
     return res.render('userDashboard',{businessName});
 }
 
@@ -28,12 +26,15 @@ async function handleBusinessAdd(req,res){
         const userToken = req.cookies.token;
         const user = getUser(userToken);
         const userId = user._id;
-
         const businessId = req.body.businessId;
+
+        const checkWalletExists = await WALLET.findOne({business:businessId, user:userId});
+
+        if (checkWalletExists) return res.json({error:'wallet already added'});
         
-        const wallet = await WALLET.create({ user: userId, business: businessId}).then(()=>{
-            res.render('userDashboard');
-        });
+        const wallet = await WALLET.create({ user: userId, business: businessId});
+        return res.json({message:'wallet added successfully'});
+       
     }catch(err){
         console.log(err);
     }
